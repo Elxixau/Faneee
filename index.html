@@ -91,7 +91,11 @@
     </style>
 </head>
 
-<body class="bg-pastel-blue min-h-screen flex flex-col items-center justify-center p-4">
+<body class="bg-pastel-blue min-h-screen flex flex-col items-center justify-center">
+
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
 
     <!-- BALON -->
     <div class="balloon text-pastel-pink top-10 left-5" style="animation-delay:0s;">🎈</div>
@@ -165,6 +169,24 @@
         </footer>
     </main>
 
+    <div id="opening-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-3xl shadow-2xl text-center max-w-sm w-full border-4 border-pastel-pink">
+
+            <h2 class="text-3xl font-cursive text-pastel-purple mb-4">Hai Fane! ❤️</h2>
+
+            <p class="text-gray-700 text-sm mb-6">
+                Welcomee, sebelum mulai putar dulu lagunya ya biar bisa enjoyy bacanyaa 💕
+            </p>
+
+            <button id="playMusicBtn"
+                class="px-6 py-3 bg-pastel-purple text-white font-bold rounded-full shadow-lg hover:bg-pastel-pink transition-all">
+                Putar Lagu 🎵
+            </button>
+        </div>
+    </div>
+    
+
     <script>
         let currentSlide = 0;
         const slideshow = document.getElementById("slideshow");
@@ -201,8 +223,17 @@
                 document.body.appendChild(c);
             }
         });
-    </script>
 
+        document.getElementById("playMusicBtn").addEventListener("click", () => {
+            const music = document.getElementById("bg-music");
+            const modal = document.getElementById("opening-modal");
+
+            music.play();
+            modal.style.display = "none";
+        });
+
+    </script>
+    
 </body>
 
 </html>
